@@ -16,7 +16,9 @@
   "author": "nec@ustream.tv",
   "license": "MIT",
   "dependencies": {
-    "iso-bmff": "latest"
+    "express": "^4.10.4",
+    "iso-bmff": "latest",
+    "lodash": "^2.4.1"
   },
   "devDependencies": {},
   "repository": {
