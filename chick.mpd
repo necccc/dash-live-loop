@@ -5,7 +5,7 @@
         maxSegmentDuration="PT2S"
         minimumUpdatePeriod="P100Y"
         minBufferTime="PT5S"
-        availabilityStartTime="1970-01-01T00:00:00Z"
+        availabilityStartTime="2014-12-01T15:20:00Z"
         profiles="urn:mpeg:dash:profile:isoff-live:2011,urn:com:dashif:dash264"
         xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd"
         timeShiftBufferDepth="PT5M">
