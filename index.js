@@ -99,7 +99,7 @@ function getMpd (request, response) {
 
 	response.set('Access-Control-Allow-Origin', '*');
 	response.type('application/xml');
-	responseFileStream('./media/chick.mpd', response)
+	responseFileStream('./chick.mpd', response)
 
 }
 
