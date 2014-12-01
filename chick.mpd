@@ -3,7 +3,7 @@
         xmlns="urn:mpeg:dash:schema:mpd:2011"
         type="dynamic"
         minimumUpdatePeriod="PT10S"
-        minBufferTime="PT4S"
+        minBufferTime="PT1.500000S"
         profiles="urn:mpeg:dash:profile:isoff-live:2011"
         availabilityStartTime="2014-12-01T15:59:06.549062Z">
  <Period
