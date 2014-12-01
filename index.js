@@ -18,7 +18,7 @@ var setup  = {
 	}
 }
 
-function getData(request, response) {
+function getChunk(request, response) {
 
 	var segment = request.params.segment;
 	var segmentId = segment.match(/(\d+)/)[0];
@@ -48,26 +48,30 @@ function getData(request, response) {
 			return response.sendStatus(500);
 		}
 
-		response.type('application/json');
-
 		var sidx = _.find(data, {'type': 'sidx'});
+		var newBaseTime = setup[segmentType].length * loopCount;
 
-		var earliestPresentationTime = sidx.content.earliestPresentationTime
+		data.forEach(function (d) {
+			if (d.type == 'moof') {
+				d.content.forEach(function (m) {
+					if (m.type == 'traf') {
+						m.content.forEach(function (t) {
+							if (t.type == 'tfdt') {
+								t.content.baseMediaDecodeTime += newBaseTime;
+							}
+						});
+					}
+				});
+			}
+		});
 
-		console.log();
+		sidx.content.earliestPresentationTime += newBaseTime;
 
+		new isoBmff.Builder(data, function (err, chunk) {
+			response.type(segmentType + '/mp4');
+			response.send(chunk);
+		});
 
-		var foo = {
-			segmentId: segmentId,
-			segmentType: segmentType,
-			loop: loopCount,
-
-			earliestPresentationTime: earliestPresentationTime,
-			startTime: setup[segmentType].length * loopCount + earliestPresentationTime
-		}
-
-
-		response.send(JSON.stringify(foo))
 	});
 
 	chunkStream
@@ -76,9 +80,40 @@ function getData(request, response) {
 
 
 
+function getInit (request, response) {
+
+	var segment = request.params.segment;
+	var segmentType = /video/.test(segment) ? 'video' : 'audio';
+	response.type(segmentType + '/mp4');
+	responseFileStream('./media/chick-' + segmentType + '_dashinit.mp4', response);
+
+}
+
+function getMpd (request, response) {
+	response.type('application/xml');
+	responseFileStream('./media/chick.mpd', response)
+
+}
 
 
 
+function responseFileStream (file, response) {
+
+	var fileStream = fs.createReadStream(file, {
+		flags: 'r',
+		encoding: null,
+		fd: null,
+		mode: 0666,
+		autoClose: true
+	});
+
+	fileStream.on('error', function () {
+		response.sendStatus(404);
+	});
+
+	fileStream.pipe(response)
+
+}
 
 
 
@@ -86,7 +121,9 @@ app.get('/', function (req, res) {
 	res.send('Hello World!')
 })
 
-app.get('/chunk/:segment.m4s',getData);
+app.get('/chunk/:segment.m4s', getChunk);
+app.get('/init/:segment.mp4', getInit);
+app.get('/chick.mpd', getMpd);
 
 var server = app.listen(3000, function () {
 	var host = server.address().address;
