@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <MPD
         xmlns="urn:mpeg:dash:schema:mpd:2011"
-        minBufferTime="PT1.500000S"
         type="dynamic"
-        minimumUpdatePeriod="P100Y"
+        minimumUpdatePeriod="PT2S"
+        timeShiftBufferDepth="PT1M"
+        maxSegmentDuration="PT2S"
+        minBufferTime="PT1.500000S"
         profiles="urn:mpeg:dash:profile:isoff-live:2011"
-        availabilityStartTime="1970-01-01T00:00:00Z">
+        availabilityStartTime="2014-12-01T13:19:06.549062Z"
+        publishTime="2014-12-01T14:18:02.771035Z">
  <Period
-        id="Chick"
+        id="P1"
         start="PT0S">
   <AdaptationSet
          group="1"
