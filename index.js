@@ -25,6 +25,8 @@ function getChunk(request, response) {
 	var segmentType = /video/.test(segment) ? 'video' : 'audio';
 
 
+	console.log('chunk request', segmentType, segmentId );
+
 	var loopCount = Math.floor(segmentId / setup[segmentType].chunks);
 	var currentSegment = segmentId % setup[segmentType].chunks;
 
@@ -83,10 +85,12 @@ function getChunk(request, response) {
 
 function getInit (request, response) {
 
-	console.log('init segment request' );
 
 	var segment = request.params.segment;
 	var segmentType = /video/.test(segment) ? 'video' : 'audio';
+
+	console.log('init segment request', segment );
+
 	response.set('Access-Control-Allow-Origin', '*');
 	response.type(segmentType + '/mp4');
 	responseFileStream('./media/chick-' + segmentType + '_dashinit.mp4', response);
