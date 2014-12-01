@@ -29,6 +29,11 @@ function getChunk(request, response) {
 	var loopCount = Math.floor(segmentId / setup[segmentType].chunks);
 	var currentSegment = segmentId % setup[segmentType].chunks;
 
+	if (currentSegment === 0) {
+		currentSegment = setup[segmentType].chunks;
+	}
+
+
 	var chunkFile = './media/'  + segment.replace(/(\d+)/, '') + currentSegment +'.m4s';
 
 	var chunkStream = fs.createReadStream(chunkFile, {
@@ -62,7 +67,6 @@ function getChunk(request, response) {
 					if (m.type == 'traf') {
 						m.content.forEach(function (t) {
 							if (t.type == 'tfdt') {
-								console.log('chunk request', segmentType, segmentId, 'tfdt');
 								t.content.baseMediaDecodeTime += newBaseTime;
 							}
 						});
