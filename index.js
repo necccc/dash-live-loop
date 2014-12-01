@@ -24,8 +24,7 @@ function getChunk(request, response) {
 	var segmentId = segment.match(/(\d+)/)[0];
 	var segmentType = /video/.test(segment) ? 'video' : 'audio';
 
-
-	console.log('chunk request', segmentType, segmentId );
+	console.log('chunk request', segmentType, segmentId);
 
 	var loopCount = Math.floor(segmentId / setup[segmentType].chunks);
 	var currentSegment = segmentId % setup[segmentType].chunks;
