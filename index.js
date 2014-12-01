@@ -68,6 +68,7 @@ function getChunk(request, response) {
 		sidx.content.earliestPresentationTime += newBaseTime;
 
 		new isoBmff.Builder(data, function (err, chunk) {
+			response.set('Access-Control-Allow-Origin', '*');
 			response.type(segmentType + '/mp4');
 			response.send(chunk);
 		});
@@ -84,12 +85,14 @@ function getInit (request, response) {
 
 	var segment = request.params.segment;
 	var segmentType = /video/.test(segment) ? 'video' : 'audio';
+	response.set('Access-Control-Allow-Origin', '*');
 	response.type(segmentType + '/mp4');
 	responseFileStream('./media/chick-' + segmentType + '_dashinit.mp4', response);
 
 }
 
 function getMpd (request, response) {
+	response.set('Access-Control-Allow-Origin', '*');
 	response.type('application/xml');
 	responseFileStream('./media/chick.mpd', response)
 
