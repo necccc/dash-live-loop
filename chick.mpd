@@ -1,18 +1,59 @@
 <?xml version="1.0"?>
-<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" minBufferTime="PT1.500000S" type="dynamic" minimumUpdatePeriod="P100Y" profiles="urn:mpeg:dash:profile:isoff-live:2011" availabilityStartTime="1970-01-01T00:00:00Z">
- <ProgramInformation moreInformationURL="http://gpac.sourceforge.net">
-  <Title>chick.mpd</Title>
- </ProgramInformation>
- <Period id="Chick" start="PT0S">
-  <AdaptationSet segmentAlignment="true" contentType="audio">
-   <Representation id="1" mimeType="audio/mp4" codecs="mp4a.40.2" audioSamplingRate="44100" startWithSAP="1" bandwidth="194065">
-    <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
-    <SegmentTemplate timescale="44100" media="/chunk/chick-audio_dash$Number$.m4s" startNumber="1" duration="87854" initialization="/init/chick-audio_dashinit.mp4"/>
+<MPD
+        xmlns="urn:mpeg:dash:schema:mpd:2011"
+        minBufferTime="PT1.500000S"
+        type="dynamic"
+        minimumUpdatePeriod="P100Y"
+        profiles="urn:mpeg:dash:profile:isoff-live:2011"
+        availabilityStartTime="1970-01-01T00:00:00Z">
+ <Period
+        id="Chick"
+        start="PT0S">
+  <AdaptationSet
+         group="1"
+         segmentAlignment="true"
+         contentType="audio">
+   <Representation
+           id="1"
+           mimeType="audio/mp4"
+           codecs="mp4a.40.2"
+           audioSamplingRate="44100"
+           startWithSAP="1"
+           bandwidth="194065">
+    <AudioChannelConfiguration
+            schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011"
+            value="2">
+    </AudioChannelConfiguration>
+    <SegmentTemplate
+            timescale="44100"
+            media="/chunk/chick-audio_dash$Number$.m4s"
+            startNumber="1"
+            initialization="/init/chick-audio_dashinit.mp4">
+    </SegmentTemplate>
    </Representation>
   </AdaptationSet>
-  <AdaptationSet segmentAlignment="true" maxWidth="1280" maxHeight="714" maxFrameRate="25" par="1280:714" contentType="video">
-   <Representation id="2" mimeType="video/mp4" codecs="avc1.64001f" width="1280" height="714" frameRate="25" sar="1:1" startWithSAP="1" bandwidth="2374413">
-    <SegmentTemplate timescale="12800" media="/chunk/chick-video_dash$Number$.m4s" startNumber="1" duration="24448" initialization="/init/chick-video_dashinit.mp4"/>
+  <AdaptationSet
+          segmentAlignment="true"
+          maxWidth="1280"
+          maxHeight="714"
+          maxFrameRate="25"
+          par="1280:714"
+          contentType="video">
+   <Representation
+           id="2"
+           mimeType="video/mp4"
+           codecs="avc1.64001f"
+           width="1280" height="714"
+           frameRate="25"
+           sar="1:1"
+           startWithSAP="1"
+           bandwidth="2374413">
+    <SegmentTemplate
+            timescale="12800"
+            media="/chunk/chick-video_dash$Number$.m4s"
+            startNumber="1"
+            initialization="/init/chick-video_dashinit.mp4">
+    </SegmentTemplate>
    </Representation>
   </AdaptationSet>
  </Period>
