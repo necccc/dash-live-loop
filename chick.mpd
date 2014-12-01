@@ -4,10 +4,10 @@
         type="dynamic"
         minimumUpdatePeriod="PT2S"
         timeShiftBufferDepth="PT1M"
-        maxSegmentDuration="PT2S"
         minBufferTime="PT1.500000S"
         profiles="urn:mpeg:dash:profile:isoff-live:2011"
-        availabilityStartTime="2014-12-01T13:19:06.549062Z">
+        availabilityStartTime="2014-12-01T13:19:06.549062Z"
+        publishTime="2014-12-01T14:18:02.771035Z">
  <Period
         id="P1"
         start="PT0S">
@@ -27,6 +27,7 @@
             value="2">
     </AudioChannelConfiguration>
     <SegmentTemplate
+            duration="87854"
             timescale="44100"
             media="/chunk/chick-audio_dash$Number$.m4s"
             startNumber="1"
@@ -51,6 +52,7 @@
            startWithSAP="1"
            bandwidth="2374413">
     <SegmentTemplate
+            duration="24448"
             timescale="12800"
             media="/chunk/chick-video_dash$Number$.m4s"
             startNumber="1"
