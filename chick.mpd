@@ -9,6 +9,7 @@
  <Period
         id="P1"
         start="PT0S">
+  <BaseURL>/</BaseURL>
   <AdaptationSet
          group="1"
          segmentAlignment="true"
@@ -27,9 +28,9 @@
     <SegmentTemplate
             duration="87854"
             timescale="44100"
-            media="/chunk/chick-audio_dash$Number$.m4s"
+            media="chunk/chick-audio_dash$Number$.m4s"
             startNumber="1"
-            initialization="/init/chick-audio_dashinit.mp4">
+            initialization="init/chick-audio_dashinit.mp4">
     </SegmentTemplate>
    </Representation>
   </AdaptationSet>
@@ -52,9 +53,9 @@
     <SegmentTemplate
             duration="24448"
             timescale="12800"
-            media="/chunk/chick-video_dash$Number$.m4s"
+            media="chunk/chick-video_dash$Number$.m4s"
             startNumber="1"
-            initialization="/init/chick-video_dashinit.mp4">
+            initialization="init/chick-video_dashinit.mp4">
     </SegmentTemplate>
    </Representation>
   </AdaptationSet>
