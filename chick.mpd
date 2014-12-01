@@ -9,7 +9,7 @@
  <Period
         id="P1"
         start="PT0S">
-  <BaseURL>/</BaseURL>
+  <BaseURL>http://212.71.235.75:3000</BaseURL>
   <AdaptationSet
          group="1"
          segmentAlignment="true"
