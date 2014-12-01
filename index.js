@@ -146,13 +146,13 @@ function responseFileStream (file, response) {
 
 
 
-app.get('/', function (req, res) {
+app.all('/', function (req, res) {
 	res.send('Hello World!')
 })
 
-app.get('/chunk/:segment.m4s', getChunk);
-app.get('/init/:segment.mp4', getInit);
-app.get('/chick.mpd', getMpd);
+app.all('/chunk/:segment.m4s', getChunk);
+app.all('/init/:segment.mp4', getInit);
+app.all('/chick.mpd', getMpd);
 
 var server = app.listen(3000, function () {
 	var host = server.address().address;
