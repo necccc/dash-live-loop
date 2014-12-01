@@ -45,19 +45,31 @@ function getChunk(request, response) {
 
 
 	var unboxing = new isoBmff.Parser(function (err, data) {
+		console.log(data );
+
 		if (err) {
 			return response.sendStatus(500);
 		}
 
-		var sidx = _.find(data, {'type': 'sidx'});
 		var newBaseTime = setup[segmentType].length * loopCount;
 
 		data.forEach(function (d) {
+
+
+			if (d.type == 'sidx') {
+				console.log('chunk request', segmentType, segmentId, 'sidx');
+				d.content.earliestPresentationTime += newBaseTime;
+			}
+
+
 			if (d.type == 'moof') {
+				console.log('chunk request', segmentType, segmentId, 'moof');
+
 				d.content.forEach(function (m) {
 					if (m.type == 'traf') {
 						m.content.forEach(function (t) {
 							if (t.type == 'tfdt') {
+								console.log('chunk request', segmentType, segmentId, 'tfdt');
 								t.content.baseMediaDecodeTime += newBaseTime;
 							}
 						});
@@ -66,13 +78,23 @@ function getChunk(request, response) {
 			}
 		});
 
-		sidx.content.earliestPresentationTime += newBaseTime;
 
-		new isoBmff.Builder(data, function (err, chunk) {
+
+
+		var build = new isoBmff.Builder(data, function (err, chunk) {
+
+			console.log('chunk response', segmentType, segmentId);
+
 			response.set('Access-Control-Allow-Origin', '*');
 			response.type(segmentType + '/mp4');
 			response.send(chunk);
+
+			unboxing = null;
+			build = null
+
+
 		});
+		return data;
 
 	});
 
