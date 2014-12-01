@@ -83,6 +83,8 @@ function getChunk(request, response) {
 
 function getInit (request, response) {
 
+	console.log('init segment request' );
+
 	var segment = request.params.segment;
 	var segmentType = /video/.test(segment) ? 'video' : 'audio';
 	response.set('Access-Control-Allow-Origin', '*');
@@ -92,6 +94,9 @@ function getInit (request, response) {
 }
 
 function getMpd (request, response) {
+
+	console.log('MPD request' );
+
 	response.set('Access-Control-Allow-Origin', '*');
 	response.type('application/xml');
 	responseFileStream('./media/chick.mpd', response)
