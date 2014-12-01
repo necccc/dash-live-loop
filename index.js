@@ -24,14 +24,16 @@ function getChunk(request, response) {
 	var segmentId = segment.match(/(\d+)/)[0];
 	var segmentType = /video/.test(segment) ? 'video' : 'audio';
 
-	console.log('chunk request', segmentType, segmentId);
 
 	var loopCount = Math.floor(segmentId / setup[segmentType].chunks);
 	var currentSegment = segmentId % setup[segmentType].chunks;
 
 	if (currentSegment === 0) {
+		loopCount = loopCount > 0 ? loopCount- 1:loopCount;
 		currentSegment = setup[segmentType].chunks;
 	}
+
+	console.log('chunk request', segmentType, segmentId, loopCount, currentSegment);
 
 
 	var chunkFile = './media/'  + segment.replace(/(\d+)/, '') + currentSegment +'.m4s';
