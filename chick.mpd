@@ -5,7 +5,7 @@
         maxSegmentDuration="PT2S"
         minimumUpdatePeriod="P100Y"
         minBufferTime="PT5S"
-        availabilityStartTime="2014-12-01T15:20:00Z"
+        availabilityStartTime="2014-12-01T15:20:16.135Z"
         profiles="urn:mpeg:dash:profile:isoff-live:2011,urn:com:dashif:dash264"
         xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd"
         timeShiftBufferDepth="PT5M">
@@ -16,8 +16,8 @@
   <AdaptationSet
           mimeType="audio/mp4" lang="en" startWithSAP="1" contentType="audio" segmentAlignment="true">
    <SegmentTemplate
-           duration="87854"
-           timescale="44100"
+           duration="2"
+
            media="/chunk/chick-audio_dash$Number$.m4s"
            startNumber="1"
            initialization="/init/chick-audio_dashinit.mp4">
@@ -43,8 +43,8 @@
           startWithSAP="1"
           contentType="video">
     <SegmentTemplate
-            duration="24448"
-            timescale="12800"
+            duration="2"
+
             media="/chunk/chick-video_dash$Number$.m4s"
             startNumber="1"
             initialization="/init/chick-video_dashinit.mp4">
