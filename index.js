@@ -128,16 +128,20 @@ function getMpd (request, response) {
 
 	console.log(request.method, 'MPD request' );
 
+	var randMinute = getRandomInt(1, 10)
+
 	response.set('Access-Control-Allow-Origin', '*');
 	response.type('application/xml');
 	response.render('mpd', {
-		availabilityStartTime: (new Date(+new Date() - 150000)).toISOString(),
+		availabilityStartTime: (new Date(+new Date() - (randMinute * 60 * 1000))).toISOString(),
 		publishTime: (new Date()).toISOString()
 	});
 
 }
 
-
+function getRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function responseFileStream (file, response) {
 
