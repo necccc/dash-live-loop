@@ -34,7 +34,7 @@ function getChunk(request, response) {
 		currentSegment = setup[segmentType].chunks;
 	}
 
-	console.log('chunk request', segmentType, segmentId, loopCount, currentSegment);
+	console.log(request.method, 'chunk request', segmentType, segmentId, loopCount, currentSegment);
 
 
 	var chunkFile = './media/'  + segment.replace(/(\d+)/, '') + currentSegment +'.m4s';
@@ -107,7 +107,7 @@ function getInit (request, response) {
 	var segment = request.params.segment;
 	var segmentType = /video/.test(segment) ? 'video' : 'audio';
 
-	console.log('init segment request', segment );
+	console.log(request.method, 'init segment request', segment );
 
 	response.set('Access-Control-Allow-Origin', '*');
 	response.type(segmentType + '/mp4');
@@ -117,7 +117,7 @@ function getInit (request, response) {
 
 function getMpd (request, response) {
 
-	console.log('MPD request' );
+	console.log(request.method, 'MPD request' );
 
 	response.set('Access-Control-Allow-Origin', '*');
 	response.type('application/xml');
