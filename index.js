@@ -14,7 +14,7 @@ var setup  = {
 		length: 2910720
 	},
 	audio: {
-		chunks: 114,
+		chunks: 119,
 		length: 10039296
 	}
 }
