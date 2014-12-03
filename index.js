@@ -116,7 +116,7 @@ function getInit (request, response) {
 }
 function getCORS (request, response) {
 
-	console.log(request.method, 'crossdomain.xml request', segment );
+	console.log(request.method, 'crossdomain.xml request' );
 
 	response.set('Access-Control-Allow-Origin', '*');
 	response.type('application/xml');
