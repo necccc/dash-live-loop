@@ -114,6 +114,15 @@ function getInit (request, response) {
 	responseFileStream('./media/chick-' + segmentType + '_dashinit.mp4', response);
 
 }
+function getCORS (request, response) {
+
+	console.log(request.method, 'crossdomain.xml request', segment );
+
+	response.set('Access-Control-Allow-Origin', '*');
+	response.type('application/xml');
+	responseFileStream('./crossdomain.xml', response);
+
+}
 
 function getMpd (request, response) {
 
@@ -125,7 +134,6 @@ function getMpd (request, response) {
 		availabilityStartTime: (new Date(+new Date() - 3600000)).toISOString(),
 		publishTime: (new Date()).toISOString()
 	});
-
 
 }
 
@@ -159,6 +167,7 @@ app.all('/', function (req, res) {
 
 app.all('/chunk/:segment.m4s', getChunk);
 app.all('/init/:segment.mp4', getInit);
+app.all('/crossdomain.xml', getCORS);
 app.all('/chick.mpd', getMpd);
 
 var server = app.listen(3000, function () {
