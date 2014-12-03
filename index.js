@@ -131,7 +131,7 @@ function getMpd (request, response) {
 	response.set('Access-Control-Allow-Origin', '*');
 	response.type('application/xml');
 	response.render('mpd', {
-		availabilityStartTime: (new Date(+new Date() - 3600000)).toISOString(),
+		availabilityStartTime: (new Date(+new Date() - 150000)).toISOString(),
 		publishTime: (new Date()).toISOString()
 	});
 
