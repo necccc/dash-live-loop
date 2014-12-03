@@ -17,7 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.10.4",
-    "iso-bmff": "latest",
+    "express-handlebars": "^1.1.0",
+    "iso-bmff": "^4.1.1",
     "lodash": "^2.4.1"
   },
   "devDependencies": {},

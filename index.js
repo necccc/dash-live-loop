@@ -1,5 +1,6 @@
 
 var express = require('express');
+var exphbs  = require('express-handlebars');
 var app = express();
 var fs = require('fs');
 var isoBmff = require('iso-bmff');
@@ -120,7 +121,11 @@ function getMpd (request, response) {
 
 	response.set('Access-Control-Allow-Origin', '*');
 	response.type('application/xml');
-	responseFileStream('./chick.mpd', response)
+	response.render('mpd', {
+		availabilityStartTime: (new Date(+new Date() - 3600000)).toISOString(),
+		publishTime: (new Date()).toISOString()
+	});
+
 
 }
 
@@ -143,7 +148,9 @@ function responseFileStream (file, response) {
 	fileStream.pipe(response)
 
 }
-
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+app.set('views', './views');
 
 
 app.all('/', function (req, res) {
