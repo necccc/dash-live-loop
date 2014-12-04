@@ -2,14 +2,14 @@
 <MPD xmlns="urn:mpeg:dash:schema:mpd:2011"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      type="dynamic"
-     maxSegmentDuration="PT2S"
+     maxSegmentDuration="PT2.67S"
      minimumUpdatePeriod="P100Y"
      minBufferTime="PT5S"
      publishTime="{{{publishTime}}}"
      availabilityStartTime="{{{availabilityStartTime}}}"
      profiles="urn:mpeg:dash:profile:isoff-live:2011"
      xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd"
-     timeShiftBufferDepth="PT15S">
+     timeShiftBufferDepth="PT10S">
     <BaseURL>http://212.71.235.75:3000</BaseURL>
     <Period id="P1" start="PT0S">
         <AdaptationSet
