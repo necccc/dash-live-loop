@@ -37,7 +37,7 @@ function getChunk(request, response) {
 	console.log(request.method, 'chunk request', segmentType, segmentId, loopCount, currentSegment);
 
 
-	var chunkFile = './media/'  + segment.replace(/(\d+)/, '') + currentSegment +'.m4s';
+	var chunkFile = './media/'  + segment.replace(/(\d+)/, '').replace('_', '-g250_') + currentSegment +'.m4s';
 
 	var chunkStream = fs.createReadStream(chunkFile, {
 		flags: 'r',
@@ -111,7 +111,7 @@ function getInit (request, response) {
 
 	response.set('Access-Control-Allow-Origin', '*');
 	response.type(segmentType + '/mp4');
-	responseFileStream('./media/chick-' + segmentType + '_dashinit.mp4', response);
+	responseFileStream('./media/chick-' + segmentType + '-g250_dashinit.mp4', response);
 
 }
 function getCORS (request, response) {
