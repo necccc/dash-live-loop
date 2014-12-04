@@ -10,12 +10,12 @@ var _ = require('lodash')
 // some defaults for this media
 var setup  = {
 	video: {
-		chunks: 120,
-		length: 2910720
+		chunks: 85,
+		length: 2848768
 	},
 	audio: {
-		chunks: 120,
-		length: 10076160
+		chunks: 85,
+		length: 10008576
 	}
 }
 
