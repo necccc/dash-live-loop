@@ -7,7 +7,7 @@
      minBufferTime="PT5S"
      publishTime="{{{publishTime}}}"
      availabilityStartTime="{{{availabilityStartTime}}}"
-     profiles="urn:mpeg:dash:profile:isoff-live:2011,urn:com:dashif:dash264"
+     profiles="urn:mpeg:dash:profile:isoff-live:2011"
      xsi:schemaLocation="urn:mpeg:dash:schema:mpd:2011 DASH-MPD.xsd"
      timeShiftBufferDepth="PT15S">
     <BaseURL>http://212.71.235.75:3000</BaseURL>
@@ -19,7 +19,7 @@
                 contentType="audio"
                 segmentAlignment="true">
             <SegmentTemplate
-                    duration="87854"
+                    duration="83534"
                     timescale="44100"
                     media="/chunk/chick-audio_dash$Number$.m4s"
                     startNumber="1"
@@ -48,7 +48,7 @@
                 startWithSAP="1"
                 contentType="video">
             <SegmentTemplate
-                    duration="24448"
+                    duration="24245"
                     timescale="12800"
                     media="/chunk/chick-video_dash$Number$.m4s"
                     startNumber="1"
